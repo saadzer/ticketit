@@ -22,10 +22,11 @@
         {
             "name": "Balázs Dura-Kovács",
             "homepage": "https://gitlab.com/balping"
-        },{
+        },
+        {
             "name": "Saad ZER",
             "email": "zer.saad@gmail.com"
-        },
+        }
     ],
     "autoload": {
         "psr-4": {
