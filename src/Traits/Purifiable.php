@@ -1,8 +1,8 @@
 <?php
 
-namespace Kordy\Ticketit\Traits;
+namespace Saadzer\Ticketit\Traits;
 
-use Kordy\Ticketit\Models\Setting;
+use Saadzer\Ticketit\Models\Setting;
 use Mews\Purifier\Facades\Purifier;
 
 trait Purifiable

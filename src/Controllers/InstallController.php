@@ -1,6 +1,6 @@
 <?php
 
-namespace Kordy\Ticketit\Controllers;
+namespace Saadzer\Ticketit\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\User;
@@ -8,10 +8,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
-use Kordy\Ticketit\Models\Agent;
-use Kordy\Ticketit\Models\Setting;
-use Kordy\Ticketit\Seeds\SettingsTableSeeder;
-use Kordy\Ticketit\Seeds\TicketitTableSeeder;
+use Saadzer\Ticketit\Models\Agent;
+use Saadzer\Ticketit\Models\Setting;
+use Saadzer\Ticketit\Seeds\SettingsTableSeeder;
+use Saadzer\Ticketit\Seeds\TicketitTableSeeder;
 
 class InstallController extends Controller
 {
@@ -28,10 +28,10 @@ class InstallController extends Controller
     public function publicAssets()
     {
         $public = $this->allFilesList(public_path('vendor/ticketit'));
-        $assets = $this->allFilesList(base_path('vendor/kordy/ticketit/src/Public'));
+        $assets = $this->allFilesList(base_path('vendor/saadzer/ticketit/src/Public'));
         if ($public !== $assets) {
             Artisan::call('vendor:publish', [
-                '--provider' => 'Kordy\\Ticketit\\TicketitServiceProvider',
+                '--provider' => 'Saadzer\\Ticketit\\TicketitServiceProvider',
                 '--tag'      => ['public'],
             ]);
         }
@@ -118,7 +118,7 @@ class InstallController extends Controller
         $inactive_migrations = $this->inactiveMigrations();
         if ($inactive_migrations) { // If a migration is missing, do the migrate
             Artisan::call('vendor:publish', [
-                '--provider' => 'Kordy\\Ticketit\\TicketitServiceProvider',
+                '--provider' => 'Saadzer\\Ticketit\\TicketitServiceProvider',
                 '--tag'      => ['db'],
             ]);
             Artisan::call('migrate');

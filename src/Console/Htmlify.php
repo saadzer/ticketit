@@ -1,10 +1,10 @@
 <?php
 
-namespace Kordy\Ticketit\Console;
+namespace Saadzer\Ticketit\Console;
 
 use Illuminate\Console\Command;
-use Kordy\Ticketit\Models\Comment;
-use Kordy\Ticketit\Models\Ticket;
+use Saadzer\Ticketit\Models\Comment;
+use Saadzer\Ticketit\Models\Ticket;
 
 class Htmlify extends Command
 {

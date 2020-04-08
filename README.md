@@ -13,7 +13,7 @@ It will integrate into your current Laravel project within minutes, and you can 
 7. Admin dashboard with statistics and performance tracking graphs
 8. Simple text editor for tickets descriptions and comments allows images upload
 
-[Full features list (12+) and screen shots](https://github.com/thekordy/ticketit/wiki/v0.2.3-Features)
+[Full features list (12+) and screen shots](https://github.com/saadzer/ticketit/wiki/v0.2.3-Features)
 
 ## Quick installation
 
@@ -44,19 +44,19 @@ However if you'd like to include Ticketit in your existing project, skip to the 
 
 Step 1. Run this code via your terminal (1-2 minutes)
 ```shell
-composer require 'kordy/ticketit:0.*'
+composer require 'saadzer/ticketit:0.*'
 ```
 
 Step 2. After install, you have to add this line on your `config/app.php` in Service Providers section (1-2 minutes).
 ```php
-Kordy\Ticketit\TicketitServiceProvider::class,
+Saadzer\Ticketit\TicketitServiceProvider::class,
 ```
 
-Step 3. [Check if App\User exists](https://github.com/thekordy/ticketit/wiki/Make-sure-that-App%5CUser-exists)
+Step 3. [Check if App\User exists](https://github.com/saadzer/ticketit/wiki/Make-sure-that-App%5CUser-exists)
 
 Step 4. Make sure you have [authentication](https://laravel.com/docs/5.4/authentication#introduction) set up. In 5.2+, you can use `php artisan make:auth`
 
-Step 5. [Setting up your master view for Ticketit integration (1-2 minutes)](https://github.com/thekordy/ticketit/wiki/Integrating-Ticketit-views-with-your-project-template)
+Step 5. [Setting up your master view for Ticketit integration (1-2 minutes)](https://github.com/saadzer/ticketit/wiki/Integrating-Ticketit-views-with-your-project-template)
 
 Step 6. Register at least one user into the system and log it in.
 
@@ -77,21 +77,21 @@ If you move your installation folder to another path (or server), you need to up
 After upgrading from `0.3.*` to `0.4`, visit url `http://your-project-url/tickets-upgrade`. This adds new rows to the config table automatically.
 
 ## Documentation
-[Ticketit Wiki](https://github.com/thekordy/ticketit/wiki)
+[Ticketit Wiki](https://github.com/saadzer/ticketit/wiki)
 
 ## Support:
-[Review features requests, give your feedback, suggest features, report issues](https://github.com/thekordy/ticketit/issues)
+[Review features requests, give your feedback, suggest features, report issues](https://github.com/saadzer/ticketit/issues)
 
 ## Live Demo
-http://ticketit.kordy.info/tickets
+http://ticketit.saadzer.info/tickets
 
 ## Project contributors (the project heros):
 
 Big thank you for all active people who took from their time to give their feedback and suggestions, they helped a lot to improve Ticketit for all of us.
 
-https://github.com/thekordy/ticketit/graphs/contributors
+https://github.com/saadzer/ticketit/graphs/contributors
 
 ## Download statistics
 
-[![statistics](https://packagist-statistics.dura.hu/kordy/ticketit/10days.svg)](https://packagist-statistics.dura.hu/kordy/ticketit/10days.svg)
+[![statistics](https://packagist-statistics.dura.hu/saadzer/ticketit/10days.svg)](https://packagist-statistics.dura.hu/saadzer/ticketit/10days.svg)
 

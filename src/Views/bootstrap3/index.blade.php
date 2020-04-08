@@ -10,7 +10,7 @@
 @stop
 
 @section('footer')
-	<script src="https://cdn.datatables.net/v/bs/dt-{{ Kordy\Ticketit\Helpers\Cdn::DataTables }}/r-{{ Kordy\Ticketit\Helpers\Cdn::DataTablesResponsive }}/datatables.min.js"></script>
+	<script src="https://cdn.datatables.net/v/bs/dt-{{ Saadzer\Ticketit\Helpers\Cdn::DataTables }}/r-{{ Saadzer\Ticketit\Helpers\Cdn::DataTablesResponsive }}/datatables.min.js"></script>
 	<script>
 	    $('.table').DataTable({
 	        processing: false,

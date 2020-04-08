@@ -1,6 +1,6 @@
 <?php
 
-namespace Kordy\Ticketit;
+namespace Saadzer\Ticketit;
 
 use Collective\Html\FormFacade as CollectiveForm;
 use Illuminate\Support\Facades\DB;
@@ -8,14 +8,14 @@ use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
-use Kordy\Ticketit\Console\Htmlify;
-use Kordy\Ticketit\Controllers\InstallController;
-use Kordy\Ticketit\Controllers\NotificationsController;
-use Kordy\Ticketit\Helpers\LaravelVersion;
-use Kordy\Ticketit\Models\Comment;
-use Kordy\Ticketit\Models\Setting;
-use Kordy\Ticketit\Models\Ticket;
-use Kordy\Ticketit\ViewComposers\TicketItComposer;
+use Saadzer\Ticketit\Console\Htmlify;
+use Saadzer\Ticketit\Controllers\InstallController;
+use Saadzer\Ticketit\Controllers\NotificationsController;
+use Saadzer\Ticketit\Helpers\LaravelVersion;
+use Saadzer\Ticketit\Models\Comment;
+use Saadzer\Ticketit\Models\Setting;
+use Saadzer\Ticketit\Models\Ticket;
+use Saadzer\Ticketit\ViewComposers\TicketItComposer;
 
 class TicketitServiceProvider extends ServiceProvider
 {
@@ -138,17 +138,17 @@ class TicketitServiceProvider extends ServiceProvider
             Route::get('/tickets-install', [
                 'middleware' => $authMiddleware,
                 'as'         => 'tickets.install.index',
-                'uses'       => 'Kordy\Ticketit\Controllers\InstallController@index',
+                'uses'       => 'Saadzer\Ticketit\Controllers\InstallController@index',
             ]);
             Route::post('/tickets-install', [
                 'middleware' => $authMiddleware,
                 'as'         => 'tickets.install.setup',
-                'uses'       => 'Kordy\Ticketit\Controllers\InstallController@setup',
+                'uses'       => 'Saadzer\Ticketit\Controllers\InstallController@setup',
             ]);
             Route::get('/tickets-upgrade', [
                 'middleware' => $authMiddleware,
                 'as'         => 'tickets.install.upgrade',
-                'uses'       => 'Kordy\Ticketit\Controllers\InstallController@upgrade',
+                'uses'       => 'Saadzer\Ticketit\Controllers\InstallController@upgrade',
             ]);
             Route::get('/tickets', function () {
                 return redirect()->route('tickets.install.index');
@@ -189,9 +189,9 @@ class TicketitServiceProvider extends ServiceProvider
          * Register htmlify command. Need to run this when upgrading from <=0.2.2
          */
 
-        $this->app->singleton('command.kordy.ticketit.htmlify', function ($app) {
+        $this->app->singleton('command.saadzer.ticketit.htmlify', function ($app) {
             return new Htmlify();
         });
-        $this->commands('command.kordy.ticketit.htmlify');
+        $this->commands('command.saadzer.ticketit.htmlify');
     }
 }

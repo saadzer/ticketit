@@ -1,17 +1,17 @@
 <?php
 
-namespace Kordy\Ticketit\Controllers;
+namespace Saadzer\Ticketit\Controllers;
 
 use App\Http\Controllers\Controller;
 use Cache;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
-use Kordy\Ticketit\Helpers\LaravelVersion;
-use Kordy\Ticketit\Models;
-use Kordy\Ticketit\Models\Agent;
-use Kordy\Ticketit\Models\Category;
-use Kordy\Ticketit\Models\Setting;
-use Kordy\Ticketit\Models\Ticket;
+use Saadzer\Ticketit\Helpers\LaravelVersion;
+use Saadzer\Ticketit\Models;
+use Saadzer\Ticketit\Models\Agent;
+use Saadzer\Ticketit\Models\Category;
+use Saadzer\Ticketit\Models\Setting;
+use Saadzer\Ticketit\Models\Ticket;
 
 class TicketsController extends Controller
 {
@@ -20,9 +20,9 @@ class TicketsController extends Controller
 
     public function __construct(Ticket $tickets, Agent $agent)
     {
-        $this->middleware('Kordy\Ticketit\Middleware\ResAccessMiddleware', ['only' => ['show']]);
-        $this->middleware('Kordy\Ticketit\Middleware\IsAgentMiddleware', ['only' => ['edit', 'update']]);
-        $this->middleware('Kordy\Ticketit\Middleware\IsAdminMiddleware', ['only' => ['destroy']]);
+        $this->middleware('Saadzer\Ticketit\Middleware\ResAccessMiddleware', ['only' => ['show']]);
+        $this->middleware('Saadzer\Ticketit\Middleware\IsAgentMiddleware', ['only' => ['edit', 'update']]);
+        $this->middleware('Saadzer\Ticketit\Middleware\IsAdminMiddleware', ['only' => ['destroy']]);
 
         $this->tickets = $tickets;
         $this->agent = $agent;

@@ -1,14 +1,14 @@
 <?php
 
-namespace Kordy\Ticketit\Controllers;
+namespace Saadzer\Ticketit\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
-use Kordy\Ticketit\Models\Configuration;
-use Kordy\Ticketit\Models\Setting;
+use Saadzer\Ticketit\Models\Configuration;
+use Saadzer\Ticketit\Models\Setting;
 
 class ConfigurationsController extends Controller
 {
@@ -88,7 +88,7 @@ class ConfigurationsController extends Controller
 
         Session::flash('configuration', 'Setting saved successfully.');
         \Cache::forget('ticketit::settings'); // refresh cached settings
-        return redirect()->action('\Kordy\Ticketit\Controllers\ConfigurationsController@index');
+        return redirect()->action('\Saadzer\Ticketit\Controllers\ConfigurationsController@index');
     }
 
     /**
@@ -138,6 +138,6 @@ class ConfigurationsController extends Controller
         \Cache::forget('ticketit::settings');
         \Cache::forget('ticketit::settings.'.$configuration->slug);
         //return redirect(route('ticketit::admin.configuration.index'));
-        return redirect()->action('\Kordy\Ticketit\Controllers\ConfigurationsController@index');
+        return redirect()->action('\Saadzer\Ticketit\Controllers\ConfigurationsController@index');
     }
 }

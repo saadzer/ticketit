@@ -30,7 +30,7 @@
     ],
     "autoload": {
         "psr-4": {
-            "Kordy\\Ticketit\\": "src"
+            "Saadzer\\Ticketit\\": "src"
         }
     }
 }

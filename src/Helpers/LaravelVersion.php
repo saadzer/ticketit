@@ -1,6 +1,6 @@
 <?php
 
-namespace Kordy\Ticketit\Helpers;
+namespace Saadzer\Ticketit\Helpers;
 
 use Illuminate\Routing\Router;
 
