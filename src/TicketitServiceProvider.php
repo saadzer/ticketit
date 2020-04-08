@@ -26,9 +26,9 @@ class TicketitServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        if(!DB::connection()->getDatabaseName())
-        {
-            echo "No db connection found" ; 
+        if(DB::connection() instanceof Illuminate\Database\MySqlConnection) {
+            // connection is made
+        }else{
             return ; 
         }
         if (!Schema::hasTable('migrations')) {
