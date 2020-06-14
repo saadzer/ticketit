@@ -3,11 +3,13 @@
 namespace Saadzer\Ticketit\Controllers;
 
 use App\Http\Controllers\Controller;
+use Exception;
 use Illuminate\Support\Facades\Mail;
 use Saadzer\Ticketit\Helpers\LaravelVersion;
 use Saadzer\Ticketit\Models\Comment;
 use Saadzer\Ticketit\Models\Setting;
 use Saadzer\Ticketit\Models\Ticket;
+use Illuminate\Support\Facades\Log; 
 
 class NotificationsController extends Controller
 {
@@ -96,29 +98,32 @@ class NotificationsController extends Controller
         } else {
             $to = $ticket->agent;
         }
+        try {
+            if (LaravelVersion::lt('5.4')) {
+                $mail_callback = function ($m) use ($to, $notification_owner, $subject) {
+                    $m->to($to->email, $to->name);
 
-        if (LaravelVersion::lt('5.4')) {
-            $mail_callback = function ($m) use ($to, $notification_owner, $subject) {
-                $m->to($to->email, $to->name);
+                    $m->replyTo($notification_owner->email, $notification_owner->name);
 
-                $m->replyTo($notification_owner->email, $notification_owner->name);
+                    $m->subject($subject);
+                };
 
-                $m->subject($subject);
-            };
+                if (Setting::grab('queue_emails') == 'yes') {
+                    Mail::queue($template, $data, $mail_callback);
+                } else {
+                    Mail::send($template, $data, $mail_callback);
+                }
+            } elseif (LaravelVersion::min('5.4')) {
+                $mail = new \Saadzer\Ticketit\Mail\TicketitNotification($template, $data, $notification_owner, $subject);
 
-            if (Setting::grab('queue_emails') == 'yes') {
-                Mail::queue($template, $data, $mail_callback);
-            } else {
-                Mail::send($template, $data, $mail_callback);
+                if (Setting::grab('queue_emails') == 'yes') {
+                    Mail::to($to)->queue($mail);
+                } else {
+                    Mail::to($to)->send($mail);
+                }
             }
-        } elseif (LaravelVersion::min('5.4')) {
-            $mail = new \Saadzer\Ticketit\Mail\TicketitNotification($template, $data, $notification_owner, $subject);
-
-            if (Setting::grab('queue_emails') == 'yes') {
-                Mail::to($to)->queue($mail);
-            } else {
-                Mail::to($to)->send($mail);
-            }
+        }catch(Exception $e){
+            Log::error("[ticketit] Notification not sent ".$e->getMessage());  
         }
     }
 }

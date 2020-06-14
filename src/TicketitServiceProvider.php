@@ -26,14 +26,14 @@ class TicketitServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        if(DB::connection() instanceof Illuminate\Database\MySqlConnection) {
-            // connection is made
-        }else{
-            return ; 
-        }
-        if (!Schema::hasTable('migrations')) {
-            // Database isn't installed yet.
-            return;
+        try{
+            DB::connection(DB::getDefaultConnection())->reconnect();
+            if (!Schema::hasTable('migrations')) {
+                // Database isn't installed yet.
+                return;
+            }
+        }catch(\Exception $e){
+            return ;
         }
         $installer = new InstallController();
 
@@ -114,16 +114,7 @@ class TicketitServiceProvider extends ServiceProvider
             // Check public assets are present, publish them if not
 //            $installer->publicAssets();
 
-            $main_route = Setting::grab('main_route');
-            $main_route_path = Setting::grab('main_route_path');
-            $admin_route = Setting::grab('admin_route');
-            $admin_route_path = Setting::grab('admin_route_path');
-
-            if (file_exists(Setting::grab('routes'))) {
-                include Setting::grab('routes');
-            } else {
-                include __DIR__.'/routes.php';
-            }
+            
         } elseif (Request::path() == 'tickets-install'
                 || Request::path() == 'tickets-upgrade'
                 || Request::path() == 'tickets'
