@@ -1,14 +1,14 @@
 <?php
-Route::group(['middleware' => 'Saadzer\Ticketit\Middleware\IsAdminMiddleware'], function () use ($admin_route, $admin_route_path) {
+Route::group(['middleware' => '\Saadzer\Ticketit\Middleware\IsAdminMiddleware'], function () use ($admin_route, $admin_route_path) {
     //Ticket admin index route (ex. http://url/tickets-admin/)
     Route::get("$admin_route_path/indicator/{indicator_period?}", [
             'as'   => $admin_route.'.dashboard.indicator',
-            'uses' => 'Saadzer\Ticketit\Controllers\DashboardController@index',
+            'uses' => '\Saadzer\Ticketit\Controllers\DashboardController@index',
     ]);
-    Route::get($admin_route_path, 'Saadzer\Ticketit\Controllers\DashboardController@index');
+    Route::get($admin_route_path, '\Saadzer\Ticketit\Controllers\DashboardController@index');
 
     //Ticket statuses admin routes (ex. http://url/tickets-admin/status)
-    Route::resource("$admin_route_path/status", 'Saadzer\Ticketit\Controllers\StatusesController', [
+    Route::resource("$admin_route_path/status", '\Saadzer\Ticketit\Controllers\StatusesController', [
         'names' => [
             'index'   => "$admin_route.status.index",
             'store'   => "$admin_route.status.store",
@@ -21,7 +21,7 @@ Route::group(['middleware' => 'Saadzer\Ticketit\Middleware\IsAdminMiddleware'], 
     ]);
 
     //Ticket priorities admin routes (ex. http://url/tickets-admin/priority)
-    Route::resource("$admin_route_path/priority", 'Saadzer\Ticketit\Controllers\PrioritiesController', [
+    Route::resource("$admin_route_path/priority", '\Saadzer\Ticketit\Controllers\PrioritiesController', [
         'names' => [
             'index'   => "$admin_route.priority.index",
             'store'   => "$admin_route.priority.store",
@@ -34,7 +34,7 @@ Route::group(['middleware' => 'Saadzer\Ticketit\Middleware\IsAdminMiddleware'], 
     ]);
 
     //Agents management routes (ex. http://url/tickets-admin/agent)
-    Route::resource("$admin_route_path/agent", 'Saadzer\Ticketit\Controllers\AgentsController', [
+    Route::resource("$admin_route_path/agent", '\Saadzer\Ticketit\Controllers\AgentsController', [
         'names' => [
             'index'   => "$admin_route.agent.index",
             'store'   => "$admin_route.agent.store",
@@ -47,7 +47,7 @@ Route::group(['middleware' => 'Saadzer\Ticketit\Middleware\IsAdminMiddleware'], 
     ]);
 
     //Agents management routes (ex. http://url/tickets-admin/agent)
-    Route::resource("$admin_route_path/category", 'Saadzer\Ticketit\Controllers\CategoriesController', [
+    Route::resource("$admin_route_path/category", '\Saadzer\Ticketit\Controllers\CategoriesController', [
         'names' => [
             'index'   => "$admin_route.category.index",
             'store'   => "$admin_route.category.store",
@@ -60,7 +60,7 @@ Route::group(['middleware' => 'Saadzer\Ticketit\Middleware\IsAdminMiddleware'], 
     ]);
 
     //Settings configuration routes (ex. http://url/tickets-admin/configuration)
-    Route::resource("$admin_route_path/configuration", 'Saadzer\Ticketit\Controllers\ConfigurationsController', [
+    Route::resource("$admin_route_path/configuration", '\Saadzer\Ticketit\Controllers\ConfigurationsController', [
         'names' => [
             'index'   => "$admin_route.configuration.index",
             'store'   => "$admin_route.configuration.store",
@@ -73,7 +73,7 @@ Route::group(['middleware' => 'Saadzer\Ticketit\Middleware\IsAdminMiddleware'], 
     ]);
 
     //Administrators configuration routes (ex. http://url/tickets-admin/administrators)
-    Route::resource("$admin_route_path/administrator", 'Saadzer\Ticketit\Controllers\AdministratorsController', [
+    Route::resource("$admin_route_path/administrator", '\Saadzer\Ticketit\Controllers\AdministratorsController', [
         'names' => [
             'index'   => "$admin_route.administrator.index",
             'store'   => "$admin_route.administrator.store",

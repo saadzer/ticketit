@@ -1,13 +1,13 @@
 <?php
 
 //Ticket public route
-Route::get("$main_route_path/complete", 'Saadzer\Ticketit\Controllers\TicketsController@indexComplete')
+Route::get("$main_route_path/complete", '\Saadzer\Ticketit\Controllers\TicketsController@indexComplete')
         ->name("$main_route-complete");
-Route::get("$main_route_path/data/{id?}", 'Saadzer\Ticketit\Controllers\TicketsController@data')
+Route::get("$main_route_path/data/{id?}", '\Saadzer\Ticketit\Controllers\TicketsController@data')
         ->name("$main_route.data");
 
 $field_name = last(explode('/', $main_route_path));
-Route::resource($main_route_path, 'Saadzer\Ticketit\Controllers\TicketsController', [
+Route::resource($main_route_path, '\Saadzer\Ticketit\Controllers\TicketsController', [
     'names' => [
         'index'   => $main_route.'.index',
         'store'   => $main_route.'.store',
@@ -24,7 +24,7 @@ Route::resource($main_route_path, 'Saadzer\Ticketit\Controllers\TicketsControlle
 
 //Ticket Comments public route
 $field_name = last(explode('/', "$main_route_path-comment"));
-Route::resource("$main_route_path-comment", 'Saadzer\Ticketit\Controllers\CommentsController', [
+Route::resource("$main_route_path-comment", '\Saadzer\Ticketit\Controllers\CommentsController', [
     'names' => [
         'index'   => "$main_route-comment.index",
         'store'   => "$main_route-comment.store",
